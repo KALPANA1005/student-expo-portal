@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Project Expo Portal</title>
+  <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="logo-box">🛡️</div><span>Admin panel</span></div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" onclick="showSection('overview', this)">📊 Dashboard</a>
+      <a href="#" class="nav-item" onclick="showSection('projects', this)">📄 PPT verification</a>
+      <a href="#" class="nav-item" onclick="showSection('judges', this)">⚖️ Judges</a>
+      <a href="#" class="nav-item" onclick="showSection('event', this)">📅 Event</a>
+    </nav>
+    <a href="#" class="logout" id="logoutBtn">🚪 Logout</a>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <h2>Overview</h2>
+      <div class="avatar" id="avatarInitials">AD</div>
+    </div>
+    <div id="statusMsg" class="status-msg"></div>
+
+    <!-- ===== OVERVIEW (stats + student table) ===== -->
+    <section id="section-overview" class="section">
+      <div class="stat-cards">
+        <div class="stat-card blue"><div class="icon">📋</div><div class="label">Registrations</div><div class="value" id="regCount">0/0</div></div>
+        <div class="stat-card green"><div class="icon">✅</div><div class="label">Approved</div><div class="value" id="approvedCount">0</div></div>
+        <div class="stat-card red"><div class="icon">❌</div><div class="label">Rejected</div><div class="value" id="rejectedCount">0</div></div>
+        <div class="stat-card purple"><div class="icon">⚖️</div><div class="label">Judges</div><div class="value" id="judgeCount">0</div></div>
+        <div class="stat-card orange"><div class="icon">☁️</div><div class="label">PPT uploads</div><div class="value" id="pptCount">0</div></div>
+      </div>
+
+      <div class="box">
+        <div class="box-header">
+          <h4>Student management</h4>
+          <input type="text" id="searchInput" placeholder="🔍 Search students" onkeyup="filterStudents()">
+        </div>
+        <table>
+          <thead><tr><th>Name</th><th>Dept</th><th>Status</th><th>Judge</th><th style="text-align:right;">Action</th></tr></thead>
+          <tbody id="studentTableBody"><tr><td colspan="5">Loading...</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="box" style="margin-top:14px;">
+        <h4>📈 Recent Activity</h4>
+        <div id="activityList" class="activity-list">Loading...</div>
+      </div>
+    </section>
+
+    <!-- ===== PPT VERIFICATION (same data as overview table, dedicated view) ===== -->
+    <section id="section-projects" class="section hidden">
+      <div class="box">
+        <h4>📄 PPT Verification</h4>
+        <table>
+          <thead><tr><th>Team</th><th>Title</th><th>File</th><th>Status</th><th style="text-align:right;">Action</th></tr></thead>
+          <tbody id="pptTableBody"><tr><td colspan="5">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== JUDGES ===== -->
+    <section id="section-judges" class="section hidden">
+      <div class="box" style="margin-bottom:14px;">
+        <h4>⚖️ Add New Judge</h4>
+        <form id="judgeForm" onsubmit="addJudge(event)">
+          <div class="form-row">
+            <div><label>Name</label><input type="text" id="j_name" required></div>
+            <div><label>Department</label><input type="text" id="j_department" required></div>
+          </div>
+          <div class="form-row">
+            <div><label>Email</label><input type="email" id="j_email" required></div>
+            <div><label>Phone</label><input type="text" id="j_phone" placeholder="10-digit number"></div>
+          </div>
+          <label>Password</label><input type="password" id="j_password" minlength="6" required>
+          <button type="submit" class="btn-primary">Add Judge</button>
+        </form>
+      </div>
+      <div class="box">
+        <h4>All Judges</h4>
+        <table>
+          <thead><tr><th>Name</th><th>Department</th><th>Email</th><th style="text-align:right;">Action</th></tr></thead>
+          <tbody id="judgeTableBody"><tr><td colspan="4">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== EVENT MANAGEMENT ===== -->
+    <section id="section-event" class="section hidden">
+      <div class="box">
+        <h4>📅 Event Details</h4>
+        <form id="eventForm" onsubmit="saveEvent(event)">
+          <div class="form-row">
+            <div><label>Registration start date</label><input type="date" id="e_regStart" required></div>
+            <div><label>Registration end date</label><input type="date" id="e_regEnd" required></div>
+          </div>
+          <div class="form-row">
+            <div><label>Event date</label><input type="date" id="e_eventDate" required></div>
+            <div><label>Venue</label><input type="text" id="e_venue" required></div>
+          </div>
+          <div class="form-row">
+            <div><label>Registration fees (₹)</label><input type="number" id="e_fees" required></div>
+            <div><label>Max registrations</label><input type="number" id="e_maxReg" required></div>
+          </div>
+          <label>Rules</label><input type="text" id="e_rules">
+          <label>Instructions</label><input type="text" id="e_instructions">
+          <button type="submit" class="btn-primary">Save Event Details</button>
+        </form>
+      </div>
+      <div class="box" style="margin-top:14px;">
+        <h4>🏆 Result Publishing</h4>
+        <p class="muted" id="resultStatusText" style="margin-bottom:12px;">Loading...</p>
+        <button class="btn-primary" id="publishBtn" onclick="publishResult()">Publish Result to All Students</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="config.js"></script>
+<script src="admin-dashboard.js"></script>
+</body>
+</html>

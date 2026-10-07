@@ -1,0 +1,19 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #F4F7FC; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.card { background: #FFFFFF; width: 380px; padding: 40px 32px; border-radius: 16px; border: 1px solid #E3E9F5; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.logo { width: 56px; height: 56px; background: #1D5FD6; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 12px; }
+h2 { text-align: center; color: #1A2340; font-size: 20px; margin-bottom: 4px; }
+p.subtitle { text-align: center; color: #8791AC; font-size: 13px; margin-bottom: 24px; }
+.tabs { display: flex; background: #F4F7FC; border-radius: 10px; padding: 4px; margin-bottom: 24px; }
+.tab { flex: 1; text-align: center; padding: 8px 0; font-size: 13px; font-weight: 500; color: #5A6584; border-radius: 8px; cursor: pointer; border: none; background: transparent; }
+.tab.active { background: #1D5FD6; color: #FFFFFF; }
+label { font-size: 13px; font-weight: 500; color: #1A2340; display: block; margin-bottom: 6px; }
+input, select { width: 100%; padding: 10px 14px; border: 1px solid #D9E2F1; border-radius: 10px; font-size: 14px; margin-bottom: 16px; outline: none; }
+input:focus, select:focus { border-color: #1D5FD6; }
+.error { display: none; background: #FBEAEA; color: #C23A3A; font-size: 13px; padding: 8px 12px; border-radius: 8px; margin-bottom: 16px; }
+.success { display: none; background: #E6F6ED; color: #1E9E5A; font-size: 13px; padding: 8px 12px; border-radius: 8px; margin-bottom: 16px; }
+button.submit { width: 100%; background: #1D5FD6; color: #FFFFFF; border: none; padding: 12px 0; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+button.submit:hover { background: #164AB0; }
+button.submit:disabled { background: #A9BEE8; cursor: not-allowed; }
+.footer { text-align: center; font-size: 13px; color: #8791AC; margin-top: 20px; }
+.footer a { color: #1D5FD6; text-decoration: none; font-weight: 500; }

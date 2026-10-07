@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Project Expo Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+  <h2>Register as Student</h2>
+  <p class="subtitle">Create your account to get started</p>
+  <div class="error" id="errorBox"></div>
+  <div class="success" id="successBox"></div>
+  <form id="registerForm" onsubmit="handleRegister(event)">
+    <label>Full name</label>
+    <input type="text" id="name" required>
+    <label>Register number</label>
+    <input type="text" id="registerNumber" required>
+    <label>Department</label>
+    <input type="text" id="department" placeholder="e.g. CSE" required>
+    <label>Year</label>
+    <select id="year" required>
+      <option value="">Select</option>
+      <option value="1">1</option><option value="2">2</option>
+      <option value="3">3</option><option value="4">4</option>
+    </select>
+    <label>Email address</label>
+    <input type="email" id="email" required>
+    <label>Phone number</label>
+    <input type="text" id="phone" placeholder="10-digit number" required>
+    <label>Password</label>
+    <input type="password" id="password" minlength="6" required>
+    <button type="submit" class="submit" id="submitBtn">Create account</button>
+  </form>
+  <p class="footer">Already have an account? <a href="index.html">Login here</a></p>
+</div>
+<script src="config.js"></script>
+<script src="register-student.js"></script>
+</body>
+</html>

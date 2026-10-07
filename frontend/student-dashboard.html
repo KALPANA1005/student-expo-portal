@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - Project Expo Portal</title>
+  <link rel="stylesheet" href="student-dashboard.css">
+</head>
+<body>
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="logo-box">🎓</div><span>Project Expo</span></div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" onclick="showSection('profile', this)">👤 Profile</a>
+      <a href="#" class="nav-item" onclick="showSection('project', this)">📄 Project registration</a>
+      <a href="#" class="nav-item" onclick="showSection('ppt', this)">☁️ PPT submission</a>
+      <a href="#" class="nav-item" onclick="showSection('event', this)">📅 Event info</a>
+      <a href="#" class="nav-item" onclick="showSection('judge', this)">⚖️ Judge info</a>
+      <a href="#" class="nav-item" onclick="showSection('notifications', this)">🔔 Notifications</a>
+      <a href="#" class="nav-item" onclick="showSection('result', this)">🏆 Result</a>
+    </nav>
+    <a href="#" class="logout" id="logoutBtn">🚪 Logout</a>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h2 id="welcomeText">Welcome back</h2><p class="muted" id="subText">Loading...</p></div>
+      <div class="avatar" id="avatarInitials">--</div>
+    </div>
+    <div id="statusMsg" class="status-msg"></div>
+
+    <section id="section-profile" class="box section">
+      <h4>👤 My Profile</h4>
+      <form id="profileForm" onsubmit="saveProfile(event)">
+        <div class="form-row">
+          <div><label>Name</label><input type="text" id="p_name"></div>
+          <div><label>Register number (fixed)</label><input type="text" id="p_regNo" disabled></div>
+        </div>
+        <div class="form-row">
+          <div><label>Department</label><input type="text" id="p_department"></div>
+          <div><label>Year</label>
+            <select id="p_year"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div><label>Email (fixed)</label><input type="email" id="p_email" disabled></div>
+          <div><label>Phone number</label><input type="text" id="p_phone"></div>
+        </div>
+        <button type="submit" class="btn-primary">Save changes</button>
+      </form>
+    </section>
+
+    <section id="section-project" class="box section hidden">
+      <h4>📄 Project Registration</h4>
+      <form id="projectForm" onsubmit="saveProject(event)">
+        <label>Project title</label><input type="text" id="pr_title" required>
+        <label>Project domain</label><input type="text" id="pr_domain" required>
+        <label>Guide name</label><input type="text" id="pr_guide" required>
+        <label>Team name</label><input type="text" id="pr_team" required>
+        <label>Team members (comma-separated)</label><input type="text" id="pr_members" required>
+        <button type="submit" class="btn-primary">Save project details</button>
+      </form>
+      <p class="muted small" id="projectStatusText"></p>
+    </section>
+
+    <section id="section-ppt" class="box section hidden">
+      <h4>☁️ PPT / PDF Submission</h4>
+      <form id="pptForm" onsubmit="uploadPPT(event)">
+        <input type="file" id="pptFile" accept=".ppt,.pptx,.pdf" required>
+        <button type="submit" class="btn-primary" style="margin-top:12px;">Upload file</button>
+      </form>
+      <p class="muted small" id="pptStatusText"></p>
+    </section>
+
+    <section id="section-event" class="box section hidden">
+      <h4>📅 Event Information</h4>
+      <div class="info-grid" id="eventInfoGrid">Loading...</div>
+    </section>
+
+    <section id="section-judge" class="box section hidden">
+      <h4>⚖️ Assigned Judge</h4>
+      <div id="judgeInfoBox">Loading...</div>
+    </section>
+
+    <section id="section-notifications" class="box section hidden">
+      <h4>🔔 Notifications</h4>
+      <div id="notificationsList">Loading...</div>
+    </section>
+
+    <section id="section-result" class="box section hidden">
+      <h4>🏆 Result</h4>
+      <div id="resultBox">Loading...</div>
+    </section>
+  </main>
+</div>
+<script src="config.js"></script>
+<script src="student-dashboard.js"></script>
+</body>
+</html>

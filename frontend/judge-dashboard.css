@@ -1,0 +1,53 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #F4F7FC; color: #1A2340; }
+.dashboard { display: flex; min-height: 100vh; }
+.sidebar { width: 210px; background: #FFFFFF; border-right: 1px solid #E3E9F5; padding: 24px 16px; display: flex; flex-direction: column; }
+.sidebar-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; font-weight: bold; font-size: 15px; }
+.logo-box { width: 34px; height: 34px; background: #1D5FD6; border-radius: 9px; display: flex; align-items: center; justify-content: center; color: #FFF; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; }
+.nav-item { text-decoration: none; color: #5A6584; font-size: 13px; padding: 10px 12px; border-radius: 10px; }
+.nav-item.active { background: #1D5FD6; color: #FFFFFF; font-weight: 500; }
+.logout { margin-top: auto; text-decoration: none; color: #8791AC; font-size: 12px; padding: 10px 12px; border-radius: 10px; background: #F4F7FC; text-align: center; cursor: pointer; }
+.main { flex: 1; padding: 32px 40px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.topbar h2 { font-size: 18px; font-weight: 600; }
+.muted { color: #8791AC; font-size: 13px; }
+.small { font-size: 12px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: #1D5FD6; color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 500; }
+.status-msg { display: none; padding: 10px 14px; border-radius: 10px; font-size: 13px; margin-bottom: 16px; }
+.status-msg.success { display: block; background: #E6F6ED; color: #1E9E5A; }
+.status-msg.error { display: block; background: #FBEAEA; color: #C23A3A; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1.4fr; gap: 14px; }
+.box { background: #FFFFFF; border: 1px solid #E3E9F5; border-radius: 14px; padding: 18px; }
+.box h4 { font-size: 14px; margin-bottom: 14px; }
+.hidden { display: none; }
+.project-list { display: flex; flex-direction: column; gap: 8px; }
+.project-item { border: 1px solid #E3E9F5; border-radius: 10px; padding: 10px 12px; cursor: pointer; font-size: 13px; }
+.project-item:hover { border-color: #1D5FD6; }
+.project-item.selected { border: 1.5px solid #1D5FD6; background: #E9F0FD; color: #1D5FD6; }
+.project-item .p-domain { font-size: 11px; color: #8791AC; margin-top: 2px; }
+.project-item.selected .p-domain { color: #1D5FD6; }
+.project-item .evaluated-tag { font-size: 10px; color: #1E9E5A; margin-top: 4px; font-weight: 500; }
+.eval-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.eval-title { font-size: 14px; font-weight: 600; }
+.btn-secondary { font-size: 12px; padding: 6px 12px; border: 1px solid #E3E9F5; background: #FFFFFF; color: #1A2340; border-radius: 8px; text-decoration: none; }
+.slider-row { margin-bottom: 14px; }
+.slider-label { display: flex; justify-content: space-between; font-size: 12px; color: #5A6584; margin-bottom: 4px; }
+.slider-label span:last-child { font-weight: 500; color: #1A2340; }
+input[type="range"] { width: 100%; }
+textarea { width: 100%; border: 1px solid #E3E9F5; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-family: Arial, sans-serif; margin-top: 6px; outline: none; resize: vertical; }
+textarea:focus { border-color: #1D5FD6; }
+label { font-size: 13px; font-weight: 500; display: block; margin-top: 14px; }
+.eval-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 16px; border-top: 1px solid #E3E9F5; }
+.eval-total { font-size: 24px; font-weight: 600; }
+.eval-total small { font-size: 13px; color: #8791AC; font-weight: normal; }
+.btn-primary { background: #1D5FD6; color: #FFFFFF; border: none; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; }
+.btn-primary:hover { background: #164AB0; }
+.note { margin-top: 16px; font-size: 12px; color: #8791AC; }
+@media (max-width: 900px) {
+  .dashboard { flex-direction: column; }
+  .sidebar { width: 100%; flex-direction: row; overflow-x: auto; }
+  .sidebar-nav { flex-direction: row; }
+  .logout { margin-top: 0; }
+  .grid-2 { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Judge Dashboard - Project Expo Portal</title>
+  <link rel="stylesheet" href="judge-dashboard.css">
+</head>
+<body>
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="logo-box">⚖️</div><span>Judge panel</span></div>
+    <nav class="sidebar-nav"><a href="#" class="nav-item active">📋 Assigned projects</a></nav>
+    <a href="#" class="logout" id="logoutBtn">🚪 Logout</a>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div><h2 id="welcomeText">Welcome</h2><p class="muted" id="subText">Loading...</p></div>
+      <div class="avatar" id="avatarInitials">--</div>
+    </div>
+    <div id="statusMsg" class="status-msg"></div>
+    <div class="grid-2">
+      <div class="box"><h4>Approved projects</h4><div id="projectList" class="project-list"></div></div>
+      <div class="box">
+        <div id="noProjectSelected" class="muted">Select a project on the left to evaluate it.</div>
+        <div id="evalFormBox" class="hidden">
+          <div class="eval-header">
+            <div><div id="evalTeamName" class="eval-title"></div><div id="evalProjectTitle" class="muted small"></div></div>
+            <a id="downloadBtn" href="#" target="_blank" class="btn-secondary">⬇ Download PPT</a>
+          </div>
+          <form id="evalForm" onsubmit="submitEvaluation(event)">
+            <div class="slider-row"><div class="slider-label"><span>Presentation</span><span id="val_presentation">0/30</span></div><input type="range" id="presentation" min="0" max="30" value="0" oninput="updateTotal()"></div>
+            <div class="slider-row"><div class="slider-label"><span>Technical knowledge</span><span id="val_technical">0/30</span></div><input type="range" id="technicalKnowledge" min="0" max="30" value="0" oninput="updateTotal()"></div>
+            <div class="slider-row"><div class="slider-label"><span>Innovation</span><span id="val_innovation">0/20</span></div><input type="range" id="innovation" min="0" max="20" value="0" oninput="updateTotal()"></div>
+            <div class="slider-row"><div class="slider-label"><span>Documentation</span><span id="val_documentation">0/20</span></div><input type="range" id="documentation" min="0" max="20" value="0" oninput="updateTotal()"></div>
+            <label>Remarks</label>
+            <textarea id="remarks" rows="3" placeholder="Write your remarks..."></textarea>
+            <div class="eval-footer">
+              <div><div class="muted small">Total score</div><div class="eval-total" id="totalScore">0<small>/100</small></div></div>
+              <button type="submit" class="btn-primary" id="submitEvalBtn">Submit marks</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="config.js"></script>
+<script src="judge-dashboard.js"></script>
+</body>
+</html>
